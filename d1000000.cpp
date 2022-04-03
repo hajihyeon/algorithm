@@ -1,5 +1,5 @@
-problem : 
-url : https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a46471
+// problem : d1000000
+// url : https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a46471
 
 #include <stdio.h>
 #include <iostream>
