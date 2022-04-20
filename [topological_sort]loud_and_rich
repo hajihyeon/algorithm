@@ -1,0 +1,47 @@
+* 
+    problem : Loud and Rich
+    url : https://leetcode.com/problems/loud-and-rich/
+ */
+
+class Solution {
+public:
+    vector<int> loudAndRich(vector<vector<int>>& richer, vector<int>& quiet) {
+        int n=quiet.size();
+        vector<vector<int>> input(n);
+        vector<int> count(n,0);
+        
+        for(auto r:richer)
+        {
+            input[r[0]].push_back(r[1]);
+            count[r[1]]++;
+        }
+        
+        queue<int> q;
+        vector<int> result(n,0);
+        iota(result.begin(),result.end(),0);
+        for(int i=0;i<n;++i){
+            if(count[i]==0){
+                q.push(i);
+                result[i] = i;
+            }
+        }
+        
+        while(!q.empty())
+        {
+            int cur=q.front();
+            q.pop();
+            for(auto child:input[cur])
+            {
+                count[child]--;
+                if(quiet[cur]<quiet[child])
+                {
+                    quiet[child]=quiet[cur];
+                    result[child]=result[cur];
+                }
+                if(count[child]==0)
+                    q.push(child);
+            }
+        }
+        return result;
+    }
+};
